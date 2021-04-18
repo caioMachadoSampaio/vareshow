@@ -1,0 +1,28 @@
+﻿projeto A3
+titulo: VareShow
+grupo: 
+
+
+Adenias Alves Barbosa Filho
+	RA: 81814286
+	Caio Felipe Machado Sampaio
+	RA:820145844
+	Gabriel Brigalante 
+	RA:818125550
+	Izabelle de Brito Schiavinato
+	RA: 818110170
+	Sandro Marcelo Soares Ruggiero
+	RA: 819227746
+	Vinícius Paixão Silva     
+	RA:818143920
+	
+
+
+
+DER:
+
+
+  
+
+GIT:
+https://github.com/caioMachadoSampaio/vareshow.git
