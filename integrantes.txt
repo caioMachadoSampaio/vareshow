@@ -16,13 +16,3 @@ Adenias Alves Barbosa Filho
 	Vinícius Paixão Silva     
 	RA:818143920
 	
-
-
-
-DER:
-
-
-  
-
-GIT:
-https://github.com/caioMachadoSampaio/vareshow.git
