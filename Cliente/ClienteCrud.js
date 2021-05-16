@@ -6,7 +6,8 @@ app.use (bodyParser.json())
 const porta = 4000;
 app.set('port', porta);
 let contador =0;
-const cliente = [
+
+let cliente = [
     {
         id: Number, 
         Nome: String, 
@@ -26,12 +27,13 @@ const cliente = [
 
     app.post('/cliente', (req, res, next) => {
         const clientes = req.body;
-        lojista.push({id: contador += 1, 
+        cliente.push({id: contador += 1, 
             Nome: clientes.Nome, 
             Telefone: clientes.Telefone, 
             Email: clientes.Email, 
-            Numero: clientes.Numero, 
-            CEP: clientes.CEP, 
+            CEP: clientes.CEP,
+            Endereco: clientes.Endereco,
+            Numero: clientes.Numero,  
             CPF: clientes.CPF,
             Senha: clientes.Senha}); 
             console.log(clientes);
@@ -46,9 +48,10 @@ const cliente = [
                 cliente.Nome = req.body.Nome;
                 cliente.Telefone = req.body.Telefone;
                 cliente.Email = req.body.Email;
+                cliente.CEP = req.body.CEP;
                 cliente.Endereco = req.body.Endereco;
                 cliente.Numero = req.body.Numero;
-                cliente.CEP = req.body.CEP;
+                cliente.CPF = req.body.CPF;
                 cliente.Senha = req.body.Senha;
             }
             }
@@ -56,17 +59,18 @@ const cliente = [
         res.status(200).json(cliente);
     })
  
-    app.delete('/cliente/:id', (req,res,next) =>{
-        const clientestatus = [];
-        contador = 1; 
-        const idClieneteDeletado = req.params.id;
-        cliente.forEach((cliente, index) =>{
-            if(cliente.id != idClienteDeletado){
-                
-            }
     
+
+
+    app.delete('/cliente/:id', (req, res, next) => {
+        const idClienteDelete = req.params.id;
+        cliente.forEach((clientes, index) => {
+            if (clientes.id == idClienteDelete) cliente.splice(index, 1)
         })
         res.status(200).json(cliente);
     })
+
+
+
     const server = http.createServer(app);
     server.listen(4000);

@@ -18,7 +18,7 @@ const lojista = [
         CNPJ: String,
         Nome_fantasia: String,
         Razao_social: String,
-        Senha: String,
+        Senha: String
     },
 ];
     app.set('port', porta);
@@ -31,9 +31,10 @@ const lojista = [
         lojista.push({id: contador += 1, 
             Nome: lojistas.Nome, 
             Telefone: lojistas.Telefone, 
-            Email: lojistas.Email, 
+            Email: lojistas.Email,
+            CEP: lojistas.CEP,
+            Endereco: lojista.Endereco,  
             Numero: lojistas.Numero, 
-            CEP: lojistas.CEP, 
             CNPJ: lojistas.CNPJ,
             Nome_fantasia: lojistas.Nome_fantasia, 
             Razao_social: lojistas.Razao_social, 
@@ -50,10 +51,12 @@ const lojista = [
                 lojista.Nome = req.body.Nome;
                 lojista.Telefone = req.body.Telefone;
                 lojista.Email = req.body.Email;
+                lojista.CEP = req.body.CEP;
                 lojista.Endereco = req.body.Endereco;
                 lojista.Numero = req.body.Numero;
-                lojista.CEP = req.body.CEP;
+                lojista.CNPJ = req.body.CNPJ;
                 lojista.Nome_fantasia = req.body.Nome_fantasia;
+                lojista.Razao_social = req.body.Razao_social;
                 lojista.Senha = req.body.Senha;
             }
             }
@@ -61,17 +64,13 @@ const lojista = [
         res.status(200).json(lojista);
     })
  
-    app.delete('/lojista/:id', (req,res,next) =>{
-        const logistastatus = [];
-        contador = 1; 
-        const idlojistaDeletado = req.params.id;
-        lojista.forEach((lojista, index) =>{
-            if(lojista.id != idlojistaDeletado){
-                
-            }
-    
+    app.delete('/lojista/:id', (req, res, next) => {
+        const idLojistaDelete = req.params.id;
+        lojista.forEach((lojistas, index) => {
+            if (lojistas.id == idLojistaDelete) lojista.splice(index, 1)
         })
         res.status(200).json(lojista);
     })
+
     const server = http.createServer(app);
-    server.listen(3000 , console.log('funciona!'));
+    server.listen(3000);
