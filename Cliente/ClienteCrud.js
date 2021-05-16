@@ -1,8 +1,7 @@
 const http = require('http');
 const express = require('express');
 const app = express();
-const bodyParser = require ('body-parser');
-app.use (bodyParser.json())
+app.use(express.json());
 const porta = 4000;
 app.set('port', porta);
 let contador =0;
