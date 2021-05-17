@@ -8,12 +8,12 @@ let contador =0;
 
 let id = 1;
 
-let estoque = [{
+let produto = [{
         id: Number,
         Nome: String,
         Quantidade: Number,
         Descricao: String,
-        Categoria: String,
+        Categoria: Array,
         Preco: Number,
         id_lojista: Number,
     },
@@ -27,71 +27,71 @@ let estoque = [{
       controle: unidadesAdquiridas - saida,
       */
 ];
-let estoque_ativo = [];
+let produto_ativo = [];
 
-app.get("/estoque", (req, res, next) => {
-    res.json(estoque);
+app.get("/produto", (req, res, next) => {
+    res.json(produto);
 });
 
-app.post("/estoque", (req, res, next) => {
-    const estoque_ativo = req.body;
-    estoque.push({
+app.post("/produto", (req, res, next) => {
+    const produto_ativo = req.body;
+    produto.push({
         id: contador += 1,
-        Nome: estoque_ativo.Nome,
-        Quantidade: estoque_ativo.Quantidade,
-        Descricao: estoque_ativo.Descricao,
-        Categoria: estoque_ativo.Categoria,
-        Preco: estoque_ativo.Preco,
-        id_lojista: estoque_ativo.id_lojista
+        Nome: produto_ativo.Nome,
+        Quantidade: produto_ativo.Quantidade,
+        Descricao: produto_ativo.Descricao,
+        Categoria: produto_ativo.Categoria,
+        Preco: produto_ativo.Preco,
+        id_lojista: produto_ativo.id_lojista
     });
-    console.log(estoque);
-    res.status(201).json(estoque)
+    console.log(produto);
+    res.status(201).json(produto)
 })
 
-app.put("/estoque/:id", (req, res, next) => {
-    const idEstoqueAlterado = req.params.id;
+app.put("/produto/:id", (req, res, next) => {
+    const idProdutoAlterado = req.params.id;
     console.log(req.body);
-    estoque.forEach((estoque) => {
-        if(estoque.id == idEstoqueAlterado){
-            estoque.Nome = req.body.Nome;
-            estoque.Quantidade = req.body.Quantidade;
-            estoque.Descricao = req.body.Descricao;
-            estoque.Categoria = req.body.Categoria;
-            estoque.Preco = req.body.Preco;
+    produto.forEach((produto) => {
+        if(produto.id == idProdutoAlterado){
+            produto.Nome = req.body.Nome;
+            produto.Quantidade = req.body.Quantidade;
+            produto.Descricao = req.body.Descricao;
+            produto.Categoria = req.body.Categoria;
+            produto.Preco = req.body.Preco;
         }
         }
     )
-    res.status(200).json(estoque);
+    res.status(200).json(produto);
 })
 
 /*
-app.delete("/estoque", (req, res, next) => {
-    estoque.forEach((estoque_ativo) => {
-        if (estoque_ativo.id != req.body.id) {
-            const estoque_ativo = {
-                id: estoque_ativo.id,
-                minimoEstoque: estoque_ativo.minimoEstoque,
-                referenciasLojista: estoque_ativo.referenciasLojista,
-                produto: estoque_ativo.produto,
-                tipo: estoque_ativo.tipo,
-                unidadesAdquiridas: estoque_ativo.unidadesAdquiridas,
-                saida: estoque_ativo.saida,
-                total: estoque_ativo.total,
+app.delete("/produto", (req, res, next) => {
+    produto.forEach((produto_ativo) => {
+        if (produto_ativo.id != req.body.id) {
+            const produto_ativo = {
+                id: produto_ativo.id,
+                minimoProduto: produto_ativo.minimoProduto,
+                referenciasLojista: produto_ativo.referenciasLojista,
+                produto: produto_ativo.produto,
+                tipo: produto_ativo.tipo,
+                unidadesAdquiridas: produto_ativo.unidadesAdquiridas,
+                saida: produto_ativo.saida,
+                total: produto_ativo.total,
             };
-            estoque_ativo.push(estoque_ativo);
+            produto_ativo.push(produto_ativo);
         }
     });
-    estoque = estoque_ativo;
+    produto = produto_ativo;
     res.status(204).end();
 });
 */
 
-app.delete('/estoque/:id', (req, res, next) => {
-    const idEstoqueDelete = req.params.id;
-    estoque.forEach((estoques, index) => {
-        if (estoques.id == idEstoqueDelete) estoque.splice(index, 1)
+app.delete('/produto/:id', (req, res, next) => {
+    const idProdutoDelete = req.params.id;
+    produto.forEach((produtos, index) => {
+        if (produtos.id == idProdutoDelete) produto.splice(index, 1)
     })
-    res.status(200).json(estoque);
+    res.status(200).json(produto);
 })
 
 
