@@ -12,10 +12,7 @@ let cliente = [
         Nome: String, 
         Telefone: String, 
         Email: String,
-        Endereco: String,
-        Numero: Number,
-        CEP: String,
-        CPF: String,
+        Endereco: Array,
         Senha: String,
     },
 ];
@@ -30,9 +27,7 @@ let cliente = [
             Nome: clientes.Nome, 
             Telefone: clientes.Telefone, 
             Email: clientes.Email, 
-            CEP: clientes.CEP,
             Endereco: clientes.Endereco,
-            Numero: clientes.Numero,  
             CPF: clientes.CPF,
             Senha: clientes.Senha}); 
             console.log(clientes);
@@ -47,9 +42,7 @@ let cliente = [
                 cliente.Nome = req.body.Nome;
                 cliente.Telefone = req.body.Telefone;
                 cliente.Email = req.body.Email;
-                cliente.CEP = req.body.CEP;
                 cliente.Endereco = req.body.Endereco;
-                cliente.Numero = req.body.Numero;
                 cliente.CPF = req.body.CPF;
                 cliente.Senha = req.body.Senha;
             }
@@ -58,9 +51,6 @@ let cliente = [
         res.status(200).json(cliente);
     })
  
-    
-
-
     app.delete('/cliente/:id', (req, res, next) => {
         const idClienteDelete = req.params.id;
         cliente.forEach((clientes, index) => {
