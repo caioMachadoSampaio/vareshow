@@ -10,8 +10,8 @@ app.set('port', porta);
 const mysql = require('mysql');
 
 const con = mysql.createConnection({
-    host: 'localhost', // O host do banco. Ex: localhost
-    user: 'Vareshow', // Um usuário do banco. Ex: user 
+    host: 'localhost', 
+    user: 'Vareshow', 
     password: '12345', 
     database: 'vareshow' 
 });
