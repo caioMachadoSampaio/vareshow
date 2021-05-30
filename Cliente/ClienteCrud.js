@@ -4,19 +4,22 @@ const app = express();
 app.use(express.json());
 const porta = 4000;
 app.set('port', porta);
+const db = require("../ConexaoDB/Conexao.js");
 let contador =0;
 
 let cliente = [
     {
         id: Number, 
-        Nome: String, 
+        Nome: String,
         Telefone: String, 
         Email: String,
         Endereco: Array,
+        CPF: String, 
         Senha: String,
     },
 ];
-    app.set('port', porta);
+
+    
     app.get('/cliente', (req, res, next) => {
         res.json(cliente);
     })

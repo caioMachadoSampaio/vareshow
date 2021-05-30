@@ -8,11 +8,10 @@ let contador =0;
 const lojista = [
     {
         id: Number, 
-        Nome: String, 
+        CNPJ: String,
         Telefone: Array, 
         Email: String,
         Endereco: Array,
-        CNPJ: String,
         Nome_fantasia: String,
         Razao_social: String,
         Senha: String
@@ -26,7 +25,6 @@ const lojista = [
     app.post('/lojista', (req, res, next) => {
         const lojistas = req.body;
         lojista.push({id: contador += 1, 
-            Nome: lojistas.Nome, 
             Telefone: lojistas.Telefone, 
             Email: lojistas.Email,
             Endereco: lojista.Endereco,   
@@ -43,7 +41,6 @@ const lojista = [
         console.log(req.body);
         lojista.forEach((lojista) => {
             if(lojista.id == idlojistaAlterado){
-                lojista.Nome = req.body.Nome;
                 lojista.Telefone = req.body.Telefone;
                 lojista.Email = req.body.Email;
                 lojista.Endereco = req.body.Endereco;
